@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { autores } from "../bancoDeDados";
+import Autor from "../../models/autor";
 
 export default class AutorControlador {
 
@@ -21,5 +22,24 @@ export default class AutorControlador {
         }
 
         return res.json(autor)
+    }
+
+    cadastrar(req: Request, res: Response){
+        const { nome, idade } = req.body
+
+        if (!nome || !idade) {
+            return res.status(400).json({
+                mensagem: "Todos os campos são obrigatórios!"
+            })
+        }
+
+        const autor = new Autor({
+            nome,
+            idade
+        })
+
+        autores.push(autor)
+
+        return res.status(201).json(autor)
     }
 }
