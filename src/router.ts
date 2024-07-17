@@ -18,7 +18,7 @@ rotas.delete('/excluir/:id',autorContraldor.excluirAutor)
 rotas.get('/post', postControlador.listarPost)
 rotas.get('/post/:id', postControlador.detalharPost)
 rotas.post('/cadastrar/post', postControlador.cadastrarPost)
-rotas.put('/editar/post', postControlador.editarPost)
+rotas.patch('/editar/post/:id', postControlador.editarPost)
 rotas.delete('/excluir/post', postControlador.excluirPost)
 
 export default rotas
